@@ -1,18 +1,25 @@
 import requests
-from googlesearch import search
-import urllib
-from bs4 import BeautifulSoup
+import bs4
+  
+text = "vale3"
+url = 'https://google.com/search?q=' + text
 
-def google_scrape(url):
-    thepage = urllib.urlopen(url)
-    soup = BeautifulSoup(thepage, "html.parser")
-    return soup.title.text
+result = requests.get(url)
+  
+soup = bs4.BeautifulSoup(result.text, "html.parser")
+# print(soup)
 
-URL = "https://www.google.com/search?q=vale3"
-page = google_scrape('vale3')
-print(page)
-# soup = BeautifulSoup(page.content, "html.parser")
+# span_objects = soup.find_all('span', attrs={"jsname": "vWLAgc"})
+span_objects = soup.find_all('span')
 
-# results = soup.find(id="vWLAgc")
+for info in span_objects:
+	print(info)
+	print("------")
 
-# print(results.prettify())
+
+# print(info)
+
+
+# input_tag = soup.find(attrs={"jsname": "vWLAgc"})
+# output = input_tag['value']
+# print(soup.prettify())
