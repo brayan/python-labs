@@ -8,6 +8,8 @@ from domain.model.Stock import Stock
 
 URL = "https://www.infomoney.com.br/cotacoes/b3/acao/"
 
+# https://www.infomoney.com.br/cotacoes/b3/fii/fundos-imobiliarios-btlg11/
+
 class StockRemoteDataSourceImpl(StockRemoteDataSource):
     
     def get_stock_price(self, company: Stock) -> float:
